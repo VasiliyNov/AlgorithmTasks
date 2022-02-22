@@ -1,66 +1,34 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Task1
 {
     class Program
     {
-        private static int FindFrequentElement1(int[] nums)
+        private static int FindFrequentElement(int[] nums)
         {
-            int number = 0;
-            int maxFrequent = 0;
-            int frequent = 1;
+            Dictionary<int, int> frequentNumbers = new Dictionary<int, int>();
 
-            for (int i = 1; i < nums.Length; i++)
+            for (int i = 0; i < nums.Length; i++)
             {
-                if (nums[i] == nums[i - 1])
+                if (frequentNumbers.ContainsKey(nums[i]))
                 {
-                    frequent++;
+                    frequentNumbers[nums[i]]++;
                 }
                 else
                 {
-                    frequent = 1;
-                }
-
-                if (frequent > maxFrequent)
-                {
-                    maxFrequent = frequent;
-                    number = nums[i-1];
+                    frequentNumbers.Add(nums[i], 1);
                 }
             }
-
-            return number;
-        }
-
-        private static int FindFrequentElement2(int[] nums)
-        {
-            int number = 0;
-            int maxFrequent = 0;
-            
-            for (int i = 0; i < nums.Length; i++)
-            {
-                int frequent = 0;
-                for (int j = 0; j < nums.Length; j++)
-                {
-                    if (nums[i] == nums[j])
-                    {
-                        frequent++;
-                    }
-
-                    if (frequent > maxFrequent)
-                    {
-                        maxFrequent = frequent;
-                        number = nums[i];
-                    }
-                }
-            }
-                return number;
+            return frequentNumbers.SingleOrDefault(pair => pair.Value == frequentNumbers.Values.Max()).Key;
         }
         static void Main(string[] args)
         {
             int[] numbers = new int[] { 1, 2, 2, 2, 2, 5, 5, 6, 7, 8 };
             
 
-            Console.WriteLine(FindFrequentElement2(numbers));
+            Console.WriteLine(FindFrequentElement(numbers));
         }
     }
 }
