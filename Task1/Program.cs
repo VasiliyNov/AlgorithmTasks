@@ -4,8 +4,7 @@ namespace Task1
 {
     class Program
     {
-
-        static int findFrequentElement1(int[] nums)
+        private static int FindFrequentElement1(int[] nums)
         {
             int number = 0;
             int maxFrequent = 0;
@@ -31,7 +30,8 @@ namespace Task1
 
             return number;
         }
-        static int findFrequentElement2(int[] nums)
+
+        private static int FindFrequentElement2(int[] nums)
         {
             int number = 0;
             int maxFrequent = 0;
@@ -60,7 +60,7 @@ namespace Task1
             int[] numbers = new int[] { 1, 2, 2, 2, 2, 5, 5, 6, 7, 8 };
             
 
-            Console.WriteLine(findFrequentElement2(numbers));
+            Console.WriteLine(FindFrequentElement2(numbers));
         }
     }
 }
