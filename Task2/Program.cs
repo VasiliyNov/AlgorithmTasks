@@ -4,35 +4,38 @@ namespace Task2
 {
     class Program
     {
-        private static void CheckingDivisionBy3And5(int n)
+        private static string[] CheckingDivisionBy3And5(int n)
         {
-            if (n % 3 == 0 && n % 5 == 0)
+            string[] result = new string[n + 1];
+
+            for (int i = 0; i <= n; i++)
             {
-                Console.WriteLine("FizzBuzz");
+                if (i % 3 == 0 && i % 5 == 0)
+                {
+                    result[i] = "FizzBuzz";
+                }
+                else if (i % 3 == 0)
+                {
+                    result[i] = "Fizz";
+                }
+                else if (i % 5 == 0)
+                {
+                    result[i] = "Buzz";
+                }
+                else
+                {
+                    result[i] = Convert.ToString(i);
+                }
             }
-            else if (n % 3 == 0)
-            {
-                Console.WriteLine("Fizz");
-            }
-            else if (n % 5 == 0)
-            {
-                Console.WriteLine("Buzz");
-            }
-            else
-            {
-                Console.WriteLine(Convert.ToString(n));
-            }
+            return result;
         }
 
         static void Main(string[] args)
         {
-            int n;
-
-            while (true)
+            string[] answer = CheckingDivisionBy3And5(15);
+            for (int i = 0; i < answer.Length; i++)
             {
-                Console.Write("Enter the integer:");
-                n = Convert.ToInt32(Console.ReadLine());
-                CheckingDivisionBy3And5(n);
+                Console.WriteLine($"answer[{i}] == {answer[i]}");
             }
         }
     }
