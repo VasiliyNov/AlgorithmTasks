@@ -1,41 +1,41 @@
 ﻿using System;
-using System.Text;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Task5
 {
     class Program
     {
-        private static void CheckSelfDividingNumber(int left, int right)
+        private static List<int> GetDigitsFromNumbers(int number)
         {
-            string tmpStr;
-            bool isSuccess;
-            StringBuilder sb = new();
+            string tmpStr = Convert.ToString(number);
 
-            for (int i = left; i <= right; i++)
+            return tmpStr.Select(e => Convert.ToInt32(e.ToString())).ToList();
+        }
+
+        private static bool IsDividableByEveryDigit(int number, List<int> digits)
+        {
+            foreach (var item in digits)
             {
-                tmpStr = Convert.ToString(i);
-
-                if (!tmpStr.Contains("0"))
+                if (item == 0 || number % item != 0)
                 {
-                    isSuccess = true;
-
-                    for (int j = 0; j < tmpStr.Length; j++)
-                    {
-                        if (i % Convert.ToInt32(tmpStr[j].ToString()) != 0)
-                        {
-                            isSuccess = false;
-                            break;
-                        }
-                    }
-
-                    if (isSuccess)
-                    {
-                        sb.Append(tmpStr + ", ");
-                    }
+                    return false;
                 }
             }
-            Console.WriteLine(sb.ToString().Substring(0, sb.Length - 2));
+            return true;
         }
+
+        private static void CheckSelfDividingNumber(int left, int right)
+        {
+            for (int i = left; i <= right; i++)
+            {
+                if (IsDividableByEveryDigit(i, GetDigitsFromNumbers(i)))
+                {
+                    Console.WriteLine(i);
+                }
+            }
+        }
+
         static void Main(string[] args)
         {
             CheckSelfDividingNumber(0, 22);
