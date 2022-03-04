@@ -5,15 +5,18 @@ namespace Task6
 {
     class Program
     {
-        private static void CheckConsistentStrings(string allowed, string[] masWords)
+        private static int CheckConsistentStrings(string allowed, string[] masWords)
         {
+            int accumulate = 0;
+
             for (int i = 0; i < masWords.Length; i++)
             {
-                if (!masWords[i].Any((el) => !allowed.Contains(el)))
+                if (masWords[i].All((el) => allowed.Contains(el)))
                 {
-                    Console.WriteLine(masWords[i]);
+                    accumulate++;
                 }
             }
+            return accumulate;
         }
 
         static void Main(string[] args)
@@ -21,7 +24,7 @@ namespace Task6
             string allowed = "ab";
             string[] words = new[] { "a", "b", "c", "ab", "ac", "bc", "abc" };
 
-            CheckConsistentStrings(allowed, words);
+            Console.WriteLine(CheckConsistentStrings(allowed, words)); 
         }
     }
 }
