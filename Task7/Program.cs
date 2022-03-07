@@ -1,32 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Task7
 {
     class Program
     {
-        private static int[] ReplacElementsInArray(int[] masOrigin)
+        private static void ReplacElementsInArray(int[] array)
         {
-            int[] mas = (int[])masOrigin.Clone();
-            int[] resultMas = new int[mas.Length];
 
-            for (int i = 0; i < mas.Length - 1; i++)
+            List<int> tmpList = new List<int>(array);
+
+            for (int i = 0; i < array.Length - 1; i++)
             {
-                mas[i] = 0;
-                resultMas[i] = mas.Max();
+                array[i] = tmpList.GetRange(i + 1, tmpList.Count - i - 1).Max();
             }
-            resultMas[^1] = -1;
 
-            return resultMas;
+            array[^1] = -1;
         }
 
         static void Main(string[] args)
         {
             int[] arr = new[] { 17, 18, 5, 4, 6, 1 };
 
-            int[] arrResult = ReplacElementsInArray(arr);
+            ReplacElementsInArray(arr);
 
-            foreach (var item in arrResult)
+            foreach (var item in arr)
             {
                 Console.Write(item + " ");
             }
