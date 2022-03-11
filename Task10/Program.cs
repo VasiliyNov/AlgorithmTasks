@@ -4,28 +4,28 @@ namespace Task10
 {
     class Program
     {
-        private static void ReverseOfCharactersInArray(char[] charStr)
+        private static char[] ReverseOfCharactersInArray(char[] charStr)
         {
             if (1 <= charStr.Length && charStr.Length <= 105)
             {
-                int i = 0;
-                int j = charStr.Length - 1;
+                var resultArr = new char[charStr.Length];
+                int counter = 0;
 
-                while (i < j)
+                for (int i = charStr.Length - 1; i > -1; i--)
                 {
-                    (charStr[i], charStr[j]) = (charStr[j], charStr[i]);
-                    i++;
-                    j--;
+                    resultArr[counter] = charStr[i];
+                    counter++;
                 }
+                return resultArr;
             }
+            return Array.Empty<char>();
         }
 
         static void Main(string[] args)
         {
             char[] s = new char[] { 'h', 'e', 'l', 'l', 'o' };
-
-            ReverseOfCharactersInArray(s);
-            Console.WriteLine(s);
+            
+            Console.WriteLine(ReverseOfCharactersInArray(s));
         }
     }
 }
