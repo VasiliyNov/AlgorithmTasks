@@ -13,14 +13,17 @@ namespace Task12
 
         public MyList(IEnumerable<T> collection)
         {
-            Node<T> current = _head = new Node<T>(collection.First());
-            _count++;
-
-            for (int i = 1; i < collection.Count(); i++)
+            if (collection.Any())
             {
-                current.Next = new Node<T>(collection.ElementAt(i));
+                Node<T> current = _head = new Node<T>(collection.First());
                 _count++;
-                current = current.Next;
+
+                for (int i = 1; i < collection.Count(); i++)
+                {
+                    current.Next = new Node<T>(collection.ElementAt(i));
+                    _count++;
+                    current = current.Next;
+                }
             }
         }
 

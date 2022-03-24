@@ -6,14 +6,16 @@ namespace Task12
     {
         private static Node<T> GetMiddleNode<T>(MyList<T> list)
         {
-            Node<T> current = list.First;
+            Node<T> stepX1 = list.First;
+            Node<T> stepX2 = list.First;
 
-            for (int i = 0; i < list.Count / 2; i++)
+            while (stepX2 != null && stepX2.Next != null)
             {
-                current = current.Next;
+                stepX1 = stepX1.Next;
+                stepX2 = stepX2.Next.Next;
             }
 
-            return current;
+            return stepX1;
         }
 
         static void Main(string[] args)
