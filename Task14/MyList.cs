@@ -54,6 +54,21 @@ namespace Task14
             }
         }
 
+        public T[] ToArray()
+        {
+            T[] arr = new T[this._count];
+            Node<T> current = _head;
+            int i = 0;
+
+            while (current != null)
+            {
+                arr[i++] = current.Data;
+                current = current.Next;
+            }
+
+            return arr;
+        }
+
         public IEnumerator GetEnumerator()
         {
             Node<T> current = _head;
