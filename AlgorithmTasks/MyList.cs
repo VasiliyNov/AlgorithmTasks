@@ -69,6 +69,35 @@ namespace AlgorithmTasks
             }
         }
 
+        public void RemoveFromEnd(int index)
+        {
+            if (index > _count || index <= 0)
+            {
+                throw new ArgumentOutOfRangeException(
+                    "Must be non - negative and less than the size of the collection. (Parameter 'index')");
+            }
+
+            int removeByIndex = _count - index;
+
+            if (removeByIndex == 0)
+            {
+                _head = _head.Next;
+            }
+            else
+            {
+                Node<T> currentNode = _head;
+
+                for (int i = 0; i < removeByIndex - 1; i++)
+                {
+                    currentNode = currentNode.Next;
+                }
+
+                currentNode.Next = currentNode.Next.Next;
+            }
+
+            _count--;
+        }
+
         public T[] ToArray()
         {
             T[] arr = new T[this._count];
