@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace Task1
 {
-    class Program
+    public class Program
     {
-        private static int FindFrequentElement(int[] nums)
+        public static int FindFrequentElement(int[] nums)
         {
             Dictionary<int, int> frequentNumbers = new Dictionary<int, int>();
 
