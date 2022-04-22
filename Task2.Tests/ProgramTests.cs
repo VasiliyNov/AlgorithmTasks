@@ -20,6 +20,17 @@ namespace Task2.Tests
         }
 
         [TestMethod]
+        public void CheckingDivisionBy3And5_PassParameter0_ReturnsFizzBuzz()
+        {
+            int param = 0;
+            string[] expected = new string[] { "FizzBuzz" };
+
+            string[] actual = Program.CheckingDivisionBy3And5(param);
+
+            CollectionAssert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void CheckingDivisionBy3And5_PassNegativeParameter_ThrowsException()
         {
             int negativeParam = -1;
