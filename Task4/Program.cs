@@ -4,10 +4,20 @@ using System.Linq;
 
 namespace Task4
 {
-    class Program
+    public class Program
     {
-        private static bool CheckUniqueOccurrencesInArray(int[] arr)
+        public static bool CheckUniqueOccurrencesInArray(int[] arr)
         {
+            if (arr == null)
+            {
+                throw new ArgumentNullException(nameof(arr));
+            }
+
+            if (arr.Length == 0)
+            {
+                throw new ArgumentException("Array cannot be empty.", nameof(arr));
+            }
+
             Dictionary<int, int> uniqueOccurrences = new();
 
             for (int i = 0; i < arr.Length; i++)
