@@ -4,19 +4,26 @@ using System.Linq;
 
 namespace Task7
 {
-    class Program
+    public class Program
     {
-        private static void ReplacElementsInArray(int[] array)
+        public static void ReplacElementsInArray(int[] array)
         {
-
-            List<int> tmpList = new List<int>(array);
-
-            for (int i = 0; i < array.Length - 1; i++)
+            if (array is null)
             {
-                array[i] = tmpList.GetRange(i + 1, tmpList.Count - i - 1).Max();
+                throw new ArgumentNullException(nameof(array));
             }
 
-            array[^1] = -1;
+            if (array.Length > 0)
+            {
+                List<int> tmpList = new List<int>(array);
+
+                for (int i = 0; i < array.Length - 1; i++)
+                {
+                    array[i] = tmpList.GetRange(i + 1, tmpList.Count - i - 1).Max();
+                }
+
+                array[^1] = -1;
+            }
         }
 
         static void Main(string[] args)
