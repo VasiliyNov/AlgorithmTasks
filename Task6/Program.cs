@@ -3,10 +3,16 @@ using System.Linq;
 
 namespace Task6
 {
-    class Program
+    public class Program
     {
-        private static int CheckConsistentStrings(string allowed, string[] masWords)
+        public static int CheckConsistentStrings(string allowed, string[] masWords)
         {
+            if (masWords is null || allowed is null)
+            {
+                throw new ArgumentNullException(
+                    string.Format("{0}, {1}", nameof(allowed), nameof(masWords)));
+            }
+
             int accumulate = 0;
 
             for (int i = 0; i < masWords.Length; i++)
@@ -16,6 +22,7 @@ namespace Task6
                     accumulate++;
                 }
             }
+
             return accumulate;
         }
 
