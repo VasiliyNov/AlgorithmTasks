@@ -3,11 +3,23 @@ using System.Linq;
 
 namespace Task8
 {
-    class Program
+    public class Program
     {
-        private static int GetMountainPeakIndex(int[] array)
+        public static int GetMountainPeakIndex(int[] array)
         {
-            return Array.IndexOf(array, array.Max());
+            if (array is null)
+            {
+                throw new ArgumentNullException(nameof(array));
+            }
+
+            if (array.Length > 0)
+            {
+                return Array.IndexOf(array, array.Max());
+            }
+            else
+            {
+                throw new ArgumentException("Array cannot be empty", nameof(array));
+            }
         }
 
         static void Main(string[] args)
