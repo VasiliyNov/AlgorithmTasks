@@ -3,10 +3,15 @@ using System.Linq;
 
 namespace Task9
 {
-    class Program
+    public class Program
     {
-        private static string ReverseOrderOfCharactersInWords(string str)
+        public static string ReverseOrderOfCharactersInWords(string str)
         {
+            if (str is null)
+            {
+                throw new ArgumentNullException(nameof(str));
+            }
+
             return string.Join(" ", str.Split().Select(s => new string(s.Reverse().ToArray())));
         }
 
