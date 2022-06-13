@@ -13,7 +13,7 @@ namespace Task4.Tests
 
             bool actual = Program.CheckUniqueOccurrencesInArray(arr);
 
-            Assert.IsTrue(actual);
+            Assert.IsFalse(actual);
         }
 
         [TestMethod]
